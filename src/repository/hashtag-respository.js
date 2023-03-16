@@ -11,10 +11,21 @@ class HashtagRepository {
     }
   }
 
+  //BULK CREATE HASHTAG
+  async bulkCreate(data) {
+    try {
+      const tags = await Hashtag.insertMany(data);
+      return tags;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   //GET HASHTAG
   async get(id) {
     try {
       const tag = await Hashtag.findById(id);
+      return tag;
     } catch (error) {
       console.log(error);
     }
@@ -28,6 +39,23 @@ class HashtagRepository {
       console.log(error);
     }
   }
+
+  //GET HASHTAG BY NAME
+  async findByName(titleList) {
+    try {
+      const tags = await Hashtag.find({
+        title: titleList,
+      });
+
+      return tags;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 module.exports = HashtagRepository;
+
+/**
+ * select("title - _id"); - will return only the title
+ */
