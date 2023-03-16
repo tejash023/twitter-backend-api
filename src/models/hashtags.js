@@ -1,15 +1,3 @@
-/* 
-
-  * Hashtag will be having a title,
-  * What all tweets are belonging to a hashtags
-    - Multiple tweets can belong to a hashtag
-    - One hashtags can have multiple tweets
-
-  * Mainting a tweet array which will have tweets id and reference will be Tweet Schema
-    - Multiple tweet ids - belonging to a hashtag
-
-*/
-
 import mongoose from "mongoose";
 
 const hashtagSchema = mongoose.Schema(
@@ -17,6 +5,7 @@ const hashtagSchema = mongoose.Schema(
     title: {
       type: String,
       required: true,
+      unique: true,
     },
     tweets: [
       {
@@ -31,3 +20,15 @@ const hashtagSchema = mongoose.Schema(
 const Hashtag = mongoose.model("Hashtag", hashtagSchema);
 
 export default Hashtag;
+
+/* 
+
+  * Hashtag will be having a title,
+  * What all tweets are belonging to a hashtags
+    - Multiple tweets can belong to a hashtag
+    - One hashtags can have multiple tweets
+
+  * Mainting a tweet array which will have tweets id and reference will be Tweet Schema
+    - Multiple tweet ids - belonging to a hashtag
+
+*/
