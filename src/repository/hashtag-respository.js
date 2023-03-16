@@ -1,4 +1,4 @@
-const Hashtag = require("../models/hashtags");
+import Hashtag from "../models/hashtags.js";
 
 class HashtagRepository {
   //CREATE HASHTAG
@@ -54,7 +54,7 @@ class HashtagRepository {
   }
 }
 
-module.exports = HashtagRepository;
+export default HashtagRepository;
 
 /**
  * select("title - _id"); - will return only the title
