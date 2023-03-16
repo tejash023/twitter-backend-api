@@ -1,12 +1,12 @@
 /* 
 
-* Hashtag will be having a title,
-* What all tweets are belonging to a hashtags
-  - Multiple tweets can belong to a hashtag
-  - One hashtags can have multiple tweets
+  * Hashtag will be having a title,
+  * What all tweets are belonging to a hashtags
+    - Multiple tweets can belong to a hashtag
+    - One hashtags can have multiple tweets
 
-* Mainting a tweet array which will have tweets id and reference will be Tweet Schema
-   - Multiple tweet ids - belonging to a hashtag
+  * Mainting a tweet array which will have tweets id and reference will be Tweet Schema
+    - Multiple tweet ids - belonging to a hashtag
 
 */
 
