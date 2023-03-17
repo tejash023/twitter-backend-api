@@ -40,7 +40,7 @@ class HashtagRepository {
     }
   }
 
-  //GET HASHTAG BY NAME
+  //GET HASHTAGS BY NAME
   async findByName(titleList) {
     try {
       const tags = await Hashtag.find({

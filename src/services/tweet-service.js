@@ -10,7 +10,7 @@ class TweetService {
     /**
      * 1. Taking the content from data => content: "this is my #first #tweet. I am #excited"
      * 2. Regex is used to extract the hashtags => ["#first", "#tweet", "#excited"]
-     * 3. Mapping over the tags to eliminate the "#" => ["first", "tweet", "excited"]
+     * 3. Mapping over the tags to eliminate the "#" and making it LCase => ["first", "tweet", "excited"]
      * 4. Check if the hastags are already present in the DB, if not then create it
      * 5. Create the tweets
      * 6. Check alreadyPresentTags, findByName will return already present tags in DB => [{title: excited}, {title:fun}]
@@ -56,7 +56,6 @@ export default TweetService;
   Tags [ 'after', 'Fun', 'nodejs', 'code' ]
   Tweet {
     content: 'This is again #after hastag processing, it is going to be #Fun #nodejs #code',
-    hashtags: [],
     _id: new ObjectId("64134694c6a22745fae98a6a"),
     createdAt: 2023-03-16T16:40:52.968Z,
     updatedAt: 2023-03-16T16:40:52.968Z,
@@ -109,7 +108,6 @@ export default TweetService;
   ]
   {
     content: 'This is again #after hastag processing, it is going to be #Fun #nodejs #code',
-    hashtags: [],
     _id: new ObjectId("64134694c6a22745fae98a6a"),
     createdAt: 2023-03-16T16:40:52.968Z,
     updatedAt: 2023-03-16T16:40:52.968Z,
