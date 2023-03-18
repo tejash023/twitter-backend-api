@@ -23,10 +23,10 @@ class TweetService {
 
     const content = data.content;
 
-    let tags = content.match(/#[a-zA-Z0-9_]+/g);
-    tags = tags.map((tag) => tag.substring(1).toLowerCase()); //this regex extracts hashtags
+    let tags = content.match(/#[a-zA-Z0-9_]+/g); //THIS REGEX EXTRACTS HASHTAGS
+    tags = tags.map((tag) => tag.substring(1).toLowerCase());
 
-    const tweet = await this.tweetRepository.create(data);
+    const tweet = await this.tweetRepository.create(data); //CREATING TWEET
 
     let alreadyPresentTags = await this.hashtagRepository.findByName(tags);
     let titleOfPresentTags = alreadyPresentTags.map((tags) => tags.title);
@@ -88,7 +88,8 @@ export default TweetService;
     { title: 'nodejs', tweets: [ '64134694c6a22745fae98a6a' ] },
     { title: 'code', tweets: [ '64134694c6a22745fae98a6a' ] }
   ]
-  ______________RESPONSE_______________ [
+    ______________RESPONSE_______________ 
+  [
     {
       title: 'nodejs',
       tweets: [ new ObjectId("64134694c6a22745fae98a6a") ],
@@ -112,6 +113,6 @@ export default TweetService;
     createdAt: 2023-03-16T16:40:52.968Z,
     updatedAt: 2023-03-16T16:40:52.968Z,
     __v: 0
-}
+  }
 
 */

@@ -25,3 +25,9 @@ const likeSchema = new mongoose.Schema(
 const Like = mongoose.model("Like", likeSchema);
 
 export default Like;
+
+/*
+  onModel: Type of Model - could be either tweet or a comment
+  likeable: ref Path for onModel
+  user: user details
+*/

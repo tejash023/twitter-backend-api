@@ -55,7 +55,3 @@ class HashtagRepository {
 }
 
 export default HashtagRepository;
-
-/**
- * select("title - _id"); - will return only the title
- */

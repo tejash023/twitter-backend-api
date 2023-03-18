@@ -16,7 +16,7 @@ class TweetRepository extends CrudRepository {
     }
   }
 
-  //GET TWEET
+  //GET TWEET - FROM CRUD REPO
 
   //GET TWEET WITH COMMENTS
   async getWithComments(id) {
@@ -30,7 +30,7 @@ class TweetRepository extends CrudRepository {
     }
   }
 
-  //DESTROY TWEET
+  //DESTROY TWEET - FROM CRUD REPO
 
   //GET ALL TWEETS
   async getAll(offset, limit) {
