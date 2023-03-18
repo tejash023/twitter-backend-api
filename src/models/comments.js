@@ -17,7 +17,7 @@ const commentSchema = mongoose.Schema(
       enum: ["Tweet", "Comment"],
     },
     commentable: {
-      type: Mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
       refPath: "onModel",
     },
