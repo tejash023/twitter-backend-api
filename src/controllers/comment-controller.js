@@ -1,4 +1,5 @@
-import CommentService from "../services/comment-service.js";
+import { CommentService } from "../services/index.js";
+import { SuccessCodes } from "../utils/erro-codes.js";
 
 const commentService = new CommentService();
 
@@ -11,7 +12,7 @@ export const createComment = async (req, res) => {
       req.body.content
     );
 
-    return res.status(200).json({
+    return res.status(SuccessCodes.CREATED).json({
       success: true,
       data: respose,
       message: "comment created successfully",

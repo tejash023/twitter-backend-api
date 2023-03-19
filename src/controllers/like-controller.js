@@ -1,4 +1,5 @@
-import LikeService from "../services/like-service.js";
+import { LikeService } from "../services/index.js";
+import { SuccessCodes } from "../utils/erro-codes.js";
 
 const likeService = new LikeService();
 
@@ -10,7 +11,7 @@ export const toggleLike = async (req, res) => {
       req.user.id
     );
 
-    return res.status(200).json({
+    return res.status(SuccessCodes.CREATED).json({
       success: true,
       data: response,
       message: "Successfully toggled like",

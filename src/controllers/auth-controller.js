@@ -1,4 +1,5 @@
-import UserService from "../services/user-service.js";
+import { UserService } from "../services/index.js";
+import { SuccessCodes } from "../utils/erro-codes.js";
 
 const userService = new UserService();
 
@@ -11,7 +12,7 @@ export const signup = async (req, res) => {
       name: req.body.name,
     });
 
-    return res.status(200).json({
+    return res.status(SuccessCodes.CREATED).json({
       success: true,
       data: response,
       message: "Sign up successfull",
@@ -32,7 +33,7 @@ export const signup = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const token = await userService.signin(req.body);
-    return res.status(200).json({
+    return res.status(SuccessCodes.CREATED).json({
       success: true,
       message: "Successfully logged in",
       data: token,
