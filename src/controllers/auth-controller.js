@@ -2,6 +2,7 @@ import UserService from "../services/user-service.js";
 
 const userService = new UserService();
 
+// REGISTERING A USER - EMAIL, PASSWORD AND NAME
 export const signup = async (req, res) => {
   try {
     const response = await userService.signup({
@@ -16,6 +17,43 @@ export const signup = async (req, res) => {
       message: "Sign up successfull",
       error: {},
     });
+  } catch (error) {
+    console.log(error);
+    return res.status(501).json({
+      success: false,
+      data: {},
+      message: "Something went wrong",
+      error: error,
+    });
+  }
+};
+
+//LOGGING IN A USER - EMAIL AND PASSWORD
+export const login = (req, res) => {
+  try {
+    const user = await userService.getUserByEmail(req.body.email);
+    
+    if(!user){
+      return res.status(401).json({
+        success:false,
+        message:'no user found'
+      })
+    }
+
+    if(!user.comparePassword(req.body.password)){
+      return res.status(401).json({
+        success:false,
+        message:'incorrect email or password'
+      })
+    }
+
+    const token = user.genJWT();
+    return res.status(200).json({
+      success:true,
+      message:'Successfully logged in',
+      data:token,
+      error:{}
+    })
   } catch (error) {
     console.log(error);
     return res.status(501).json({
