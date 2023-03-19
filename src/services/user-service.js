@@ -14,7 +14,7 @@ class UserService {
     }
   }
 
-  async getUserByEmail(data) {
+  async getUserByEmail(email) {
     try {
       const user = await this.userRepository.findBy({ email });
       return user;

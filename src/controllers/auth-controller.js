@@ -29,31 +29,32 @@ export const signup = async (req, res) => {
 };
 
 //LOGGING IN A USER - EMAIL AND PASSWORD
-export const login = (req, res) => {
+export const login = async (req, res) => {
   try {
     const user = await userService.getUserByEmail(req.body.email);
-    
-    if(!user){
+
+    if (!user) {
       return res.status(401).json({
-        success:false,
-        message:'no user found'
-      })
+        success: false,
+        message: "no user found",
+      });
     }
 
-    if(!user.comparePassword(req.body.password)){
+    if (!user.comparePassword(req.body.password)) {
       return res.status(401).json({
-        success:false,
-        message:'incorrect email or password'
-      })
+        success: false,
+        message: "incorrect email or password",
+      });
     }
 
     const token = user.genJWT();
+
     return res.status(200).json({
-      success:true,
-      message:'Successfully logged in',
-      data:token,
-      error:{}
-    })
+      success: true,
+      message: "Successfully logged in",
+      data: token,
+      error: {},
+    });
   } catch (error) {
     console.log(error);
     return res.status(501).json({
