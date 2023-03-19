@@ -11,14 +11,20 @@ const opts = {
 
 //validation of tokens
 export const passportAuth = (passport) => {
-  passport.use(
-    new JWTStrategy(opts, async (jwt_payload, done) => {
-      const user = await User.findById(jwt_payload.id);
-      if (!user) {
-        done(null, user);
-      } else {
-        done(null, false);
-      }
-    })
-  );
+  try {
+    passport.use(
+      new JWTStrategy(opts, async (jwt_payload, done) => {
+        const user = await User.findById(jwt_payload.id);
+
+        if (!user) {
+          done(null, false);
+        } else {
+          done(null, user);
+        }
+      })
+    );
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 };
