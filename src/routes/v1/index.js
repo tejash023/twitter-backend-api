@@ -9,7 +9,7 @@ import { authenticate } from "../../middlewares/authenticate.js";
 
 const router = express.Router();
 
-router.post("/tweets", authenticate, createTweet);
+router.post("/tweets", createTweet);
 
 router.post("/likes/toggle", toggleLike);
 
