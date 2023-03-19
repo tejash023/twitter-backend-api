@@ -1,16 +1,18 @@
 import { UserService } from "../services/index.js";
-import { SuccessCodes } from "../utils/erro-codes.js";
+import { SuccessCodes } from "../utils/error-codes.js";
 
 const userService = new UserService();
 
 // REGISTERING A USER - EMAIL, PASSWORD AND NAME
 export const signup = async (req, res) => {
+  const registerData = {
+    email: req.body.email,
+    password: req.body.password,
+    name: req.body.name,
+  };
+
   try {
-    const response = await userService.signup({
-      email: req.body.email,
-      password: req.body.password,
-      name: req.body.name,
-    });
+    const response = await userService.signup(registerData);
 
     return res.status(SuccessCodes.CREATED).json({
       success: true,

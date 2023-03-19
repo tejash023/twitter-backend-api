@@ -1,5 +1,5 @@
 import { LikeService } from "../services/index.js";
-import { SuccessCodes } from "../utils/erro-codes.js";
+import { SuccessCodes } from "../utils/error-codes.js";
 
 const likeService = new LikeService();
 

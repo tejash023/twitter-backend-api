@@ -7,15 +7,22 @@ import { signup, login } from "../../controllers/auth-controller.js";
 
 import { authenticate } from "../../middlewares/authenticate.js";
 
+import {
+  validateRegisterUserData,
+  validateLoginUserData,
+} from "../../middlewares/validate-input.js";
+
 const router = express.Router();
 
+//CREATING TWEETS /api/v1/tweets
 router.post("/tweets", createTweet);
 
 router.post("/likes/toggle", toggleLike);
 
 router.post("/comment", createComment);
 
-router.post("/signup", signup);
-router.post("/login", login);
+router.post("/signup", validateRegisterUserData, signup);
+
+router.post("/login", validateLoginUserData, login);
 
 export default router;
