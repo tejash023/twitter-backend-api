@@ -37,7 +37,9 @@ userSchema.methods.genJWT = function generate() {
   return JWT.sign(
     { id: this._id, email: this.email },
     "dkjfwu45843rhih34853hnft",
-    { expiresIn: "1h" }
+    {
+      expiresIn: "1h",
+    }
   );
 };
 
