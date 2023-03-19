@@ -18,6 +18,60 @@ The backend is responsible for handling various functionalities of a Twitter-lik
 - User authentication
 - Image upload support for each tweet using Amazon S3
 
+## Folder Structure
+
+```
+
+.
+└── src/
+  ├── config/
+  │   ├── datbase.js
+  │   ├── file-upload-s3-config.js
+  │   └── jwt-middleware
+  ├── controllers/
+  │   ├── auth-controller/
+  │   │   ├── signup
+  │   │   └── login
+  │   ├── comment-controller/
+  │   │   └── createComment
+  │   ├── like-controller/
+  │   │   └── toggleLike
+  │   └── tweet-controller/
+  │       └── createTweet
+  ├── middlewares/
+  ├── models/
+  │   ├── comments/
+  │   ├── hashtags/
+  │   ├── like/
+  │   ├── tweet/
+  │   └── user/
+  ├── repository/
+  │   ├── index/
+  │   ├── crud-repository/
+  │   ├── comment-repository/
+  │   ├── like-repository/
+  │   ├── tweet-repository/
+  │   ├── hashtag-repository/
+  │   ├── like-repository/
+  │   └── user-repository/
+  ├── routes/
+  │   ├── v1/
+  │   │   └── index/
+  │   └── index/
+  ├── services/
+  │   ├── index/
+  │   ├── like-services/
+  │   ├── user-services/
+  │   ├── comment-services/
+  │   └── tweet-services/
+  ├── utils/
+  │   └── error-codes/
+  └── index.js
+
+```
+
+## Run Locally
+
 ## Prerequisites
 
 - Node.js and NPM installed on your system
@@ -34,8 +88,9 @@ The backend is responsible for handling various functionalities of a Twitter-lik
 
 2.  Install the dependencies:
 
-    `cd twitter-backend-api
-npm install`
+        `cd twitter-backend-api
+
+    npm install`
 
 3.  Configure environment variables:
 
