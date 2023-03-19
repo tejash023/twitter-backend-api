@@ -25,3 +25,9 @@
 - User auth
 
 - Every tweet might be having hashtags
+
+## Folder Structure
+
+- src
+  - --config
+  - --controllers

@@ -31,24 +31,7 @@ export const signup = async (req, res) => {
 //LOGGING IN A USER - EMAIL AND PASSWORD
 export const login = async (req, res) => {
   try {
-    const user = await userService.getUserByEmail(req.body.email);
-
-    if (!user) {
-      return res.status(401).json({
-        success: false,
-        message: "no user found",
-      });
-    }
-
-    if (!user.comparePassword(req.body.password)) {
-      return res.status(401).json({
-        success: false,
-        message: "incorrect email or password",
-      });
-    }
-
-    const token = user.genJWT();
-
+    const token = await userService.signin(req.body);
     return res.status(200).json({
       success: true,
       message: "Successfully logged in",
@@ -57,7 +40,7 @@ export const login = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    return res.status(501).json({
+    return res.status(500).json({
       success: false,
       data: {},
       message: "Something went wrong",
