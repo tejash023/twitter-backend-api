@@ -48,6 +48,16 @@ class TweetService {
 
     return tweet;
   }
+
+  async getAll(offset, limit) {
+    const tweets = await this.tweetRepository.getAll(offset, limit);
+    return tweets;
+  }
+
+  async destroy(id) {
+    await this.tweetRepository.destroy(id);
+    return true;
+  }
 }
 
 export default TweetService;

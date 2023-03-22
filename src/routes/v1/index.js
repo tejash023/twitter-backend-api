@@ -1,6 +1,10 @@
 import express from "express";
 
-import { createTweet } from "../../controllers/tweet-controller.js";
+import {
+  createTweet,
+  getAllTweets,
+  destroyTweet,
+} from "../../controllers/tweet-controller.js";
 import { toggleLike } from "../../controllers/like-controller.js";
 import { createComment } from "../../controllers/comment-controller.js";
 import { signup, login } from "../../controllers/auth-controller.js";
@@ -24,5 +28,8 @@ router.post("/comment", createComment);
 router.post("/signup", validateRegisterUserData, signup);
 
 router.post("/login", validateLoginUserData, login);
+
+router.get("/tweets", getAllTweets);
+router.post("/tweet/destroy/", destroyTweet);
 
 export default router;

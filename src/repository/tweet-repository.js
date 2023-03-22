@@ -35,7 +35,10 @@ class TweetRepository extends CrudRepository {
   //GET ALL TWEETS
   async getAll(offset, limit) {
     try {
-      const tweet = await Tweet.find().skip(offset).limit(limit);
+      const tweet = await Tweet.find()
+        .skip(offset)
+        .limit(limit)
+        .sort({ date: -1 });
       return tweet;
     } catch (error) {
       console.log(error);
